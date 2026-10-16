@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audius Music Dashboard</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <header class="dashboard-header">
+    <h1>🎵 Audius Music Dashboard</h1>
+    <div class="dashboard-controls">
+      <button id="add-todo">+ ToDo</button>
+      <button id="add-pomodoro">+ Помодоро</button>
+      <button id="add-search">+ Поиск в iTunes</button>
+      <button id="add-albums">+ Альбомы</button>
+      <button id="add-trending">+ Популярное на Audius</button>
+    </div>
+  </header>
+
+  <section class="dashboard-intro">
+    <div>
+      <p class="dashboard-intro__eyebrow">
+        Independent music dashboard / 001
+      </p>
+
+      <h2>
+        MUSIC<br />
+        IN YOUR <span>ORBIT.</span>
+      </h2>
+
+      <p class="dashboard-intro__description">
+        Исследуй новые треки, следи за музыкальными открытиями
+        и собирай собственную коллекцию задач.
+      </p>
+    </div>
+
+    <span class="dashboard-intro__index">A—01 / 2026</span>
+  </section>
+
+  <div class="dashboard-section-label">
+    <span>Interactive workspace</span>
+    <span>5 widget types / iTunes + Audius</span>
+  </div>
+
+  <main id="dashboard" class="dashboard-grid"></main>
+
+  <!-- Audius SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@audius/sdk@latest/dist/sdk.min.js"></script>
+  <!-- Main module -->
+  <script type="module" src="main.js"></script>
+
+  <footer class="dashboard-footer">
+    <span>AUDIO / VISUAL — PERSONAL PROJECT</span>
+    <span>DESIGNED TO EXPLORE SOUND.</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,568 @@
+
+.widget {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(25, 24, 29, 0.94);
+  animation: widgetAppear 0.35s ease both;
+}
+
+.widget::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 3px;
+  background: var(--purple);
+  content: '';
+}
+
+.widget::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  border-right: 1px solid rgba(168, 117, 255, 0.16);
+  border-top: 1px solid rgba(168, 117, 255, 0.16);
+  content: '';
+  pointer-events: none;
+}
+
+@keyframes widgetAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.widget__title {
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+}
+
+.widget__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+}
+
+.widget__btn {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #28252f;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.widget__btn:hover {
+  border-color: var(--purple);
+  background: #342743;
+}
+
+.widget__btn--add,
+.widget__btn--search {
+  border-color: var(--purple);
+  background: var(--purple);
+  color: #160e20;
+  font-weight: 800;
+}
+
+.widget__btn--add:hover,
+.widget__btn--search:hover {
+  background: var(--purple-bright);
+  color: #160e20;
+}
+
+.widget__btn--close {
+  display: grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  place-items: center;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.widget__btn--close:hover {
+  border-color: var(--danger);
+  background: rgba(255, 113, 139, 0.12);
+  color: var(--danger);
+}
+
+.widget__input-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.widget__input {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #111014;
+  color: var(--text);
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.widget__input::placeholder {
+  color: #898292;
+}
+
+.widget__input:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+
+.widget__state {
+  padding: 18px;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  text-align: center;
+  font-size: 16px;
+}
+
+.widget__state--loading {
+  color: var(--purple-bright);
+}
+
+.widget__state--error {
+  border-color: rgba(255, 113, 139, 0.45);
+  color: var(--danger);
+}
+
+.todo-list,
+.track-list,
+.trending-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid transparent;
+  background: #121115;
+  transition: border-color 0.2s ease;
+}
+
+.todo-item:hover {
+  border-color: var(--border);
+}
+
+.todo-item input[type='checkbox'] {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--purple);
+  cursor: pointer;
+}
+
+.todo-item span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.todo-item--done span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.todo-item__delete {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 22px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.todo-item__delete:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.track-item,
+.trending-item {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--border);
+  background: #121115;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.track-item:hover,
+.trending-item:hover {
+  border-color: rgba(168, 117, 255, 0.6);
+  background: #1d1924;
+}
+
+.track-item__title,
+.trending-item__title {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.track-item__artist,
+.track-item__meta,
+.trending-item__plays {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.track-item__meta {
+  color: var(--purple-bright);
+}
+
+.trending-item {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.trending-item__rank {
+  color: var(--purple);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.trending-item__title {
+  min-width: 0;
+}
+
+.trending-item__plays {
+  margin-top: 0;
+  text-align: right;
+}
+
+.widget__body > .widget__btn--refresh {
+  align-self: flex-start;
+  min-width: 120px;
+}
+
+@media (max-width: 520px) {
+  .widget__header {
+    padding: 20px 16px 16px;
+  }
+
+  .widget__body {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .widget__input-group {
+    flex-direction: column;
+  }
+
+  .widget__input-group .widget__btn {
+    width: 100%;
+  }
+
+  .trending-item {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .trending-item__plays {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+
+/* ===== Кнопки-действия в шапке виджета ===== */
+.widget__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.widget__btn--minimize {
+  display: grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  place-items: center;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.widget__btn--minimize:hover {
+  border-color: var(--purple);
+  background: rgba(168, 117, 255, 0.12);
+  color: var(--purple-bright);
+}
+
+/* ===== Свёрнутое состояние виджета ===== */
+.widget--minimized .widget__body {
+  display: none;
+}
+
+/* ===== Блок ошибки с кнопкой "Повторить" ===== */
+.widget__state--error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.widget__error-text {
+  display: block;
+}
+
+.widget__btn--retry {
+  border-color: var(--danger);
+  background: rgba(255, 113, 139, 0.12);
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.widget__btn--retry:hover {
+  background: var(--danger);
+  color: #160e20;
+}
+
+/* ===== Виджет обложек альбомов ===== */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.album-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  background: #121115;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.album-card:hover {
+  border-color: rgba(168, 117, 255, 0.6);
+  background: #1d1924;
+}
+
+.album-card__cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #0c0b0e;
+  border: 1px solid var(--border);
+}
+
+.album-card__cover--empty {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 36px;
+}
+
+.album-card__title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.album-card__artist {
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* ===== Виджет Помодоро ===== */
+.pomodoro__mode {
+  color: var(--purple-bright);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.pomodoro__time {
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(48px, 10vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.pomodoro__controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pomodoro__controls .widget__btn {
+  min-width: 110px;
+}
+
+.widget--pomodoro-break .pomodoro__mode {
+  color: var(--danger);
+}
+
+.widget--pomodoro-break .pomodoro__time {
+  color: var(--danger);
+}
+
+/* ===== Обложки в карточке трека ===== */
+.track-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.track-item__cover {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: #0c0b0e;
+}
+
+.track-item__info {
+  min-width: 0;
+  flex: 1;
+}
+
+/* ===== Виджет обложек альбомов ===== */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.album-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  background: #121115;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.album-card:hover {
+  border-color: rgba(168, 117, 255, 0.6);
+  background: #1d1924;
+}
+
+.album-card__cover-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #0c0b0e;
+  border: 1px solid var(--border);
+}
+
+.album-card__cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-card__cover--empty {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 36px;
+}
+
+.album-card__title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.album-card__artist {
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.album-card__year {
+  color: var(--purple-bright);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
